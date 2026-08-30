@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { width: 320px; padding: 15px; font-family: Arial, sans-serif; margin: 0; }
+        .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        h3 { margin: 0; }
+        #searchInput {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 7px 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-family: inherit;
+        }
+        #searchInput:focus { outline: none; border-color: #1a73e8; }
+        .tag-filter-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+        .tag-filter-btn {
+            border: 1px solid #ddd;
+            background: white;
+            color: #555;
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 11px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .tag-filter-btn:hover { background: #f5f5f5; }
+        .tag-filter-btn.active { background: #1a73e8; border-color: #1a73e8; color: white; }
+        #flagsList { max-height: 380px; overflow-y: auto; padding-left: 5px; }
+        .flag-item { border-bottom: 1px solid #eee; padding: 12px 0; }
+        .flag-text { font-size: 14px; margin-bottom: 5px; line-height: 1.4; word-break: break-word; }
+        .meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+        .date { font-size: 11px; color: gray; }
+        .tag-chip { font-size: 10px; color: white; padding: 2px 8px; border-radius: 10px; }
+        .actions { display: flex; gap: 8px; align-items: center; }
+        .link-btn { text-decoration: none; color: white; background: #1a73e8; padding: 5px 10px; border-radius: 4px; font-size: 12px; border: none; cursor: pointer; font-family: inherit; transition: 0.2s; }
+        .link-btn:hover { background: #1557b0; }
+        .delete-btn { background: none; border: none; cursor: pointer; font-size: 14px; color: #d93025; padding: 5px; border-radius: 4px; }
+        .delete-btn:hover { background: #fce8e6; }
+        #clearAllBtn { background: none; border: 1px solid #d93025; color: #d93025; padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; }
+        #clearAllBtn:hover { background: #fce8e6; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header-row">
+        <h3>🚩 ההודעות ששמרתי</h3>
+        <button id="clearAllBtn" style="display:none;">נקה הכל</button>
+    </div>
+
+    <input type="text" id="searchInput" placeholder="🔍 חיפוש בדגלים...">
+
+    <div class="tag-filter-row">
+        <button class="tag-filter-btn active" data-tag="all">הכל</button>
+        <button class="tag-filter-btn" data-tag="חשוב">⭐ חשוב</button>
+        <button class="tag-filter-btn" data-tag="לבדוק">🔍 לבדוק</button>
+        <button class="tag-filter-btn" data-tag="רעיון">💡 רעיון</button>
+        <button class="tag-filter-btn" data-tag="none">ללא תגית</button>
+    </div>
+
+    <div id="flagsList"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
